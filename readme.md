@@ -36,11 +36,11 @@ A smart web app that helps users understand food labels in simple language using
 
 ---
 
-<!-- ## 📸 Screenshots (Add your own)
+## 📸 Screenshots
 
-| Report Example | Chart View |
-|----------------|------------|
-| ![report.png](#) | ![chart.png](#) | -->
+| Landing page | Dashboard |
+|--------------|-----------|
+| ![Landing Page](/landingpage.png) | ![Dashboard](/dashboard.png) |
 
 ---
 
