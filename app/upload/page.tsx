@@ -18,6 +18,9 @@ import {
   Search,
   Calendar,
   PieChart,
+  Save,
+  Share2,
+  Download,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -25,10 +28,12 @@ import { Tabs, TabsContent } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import NutritionChart from "@/components/nutrition-chart"
 import ScanHistory from "@/components/scan-history"
 import DashboardHeader from "@/components/dashboard-header"
 import DashboardSidebar from "@/components/dashboard-sidebar"
+import EnhancedNutritionChart from "@/components/enhanced-nutrition-chart"
+import NutritionFactsTable from "@/components/nutrition-facts-table"
+import NutrientCard from "@/components/nutrient-card"
 
 export default function Dashboard() {
   const [text, setText] = useState("")
@@ -371,79 +376,199 @@ export default function Dashboard() {
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <Card className="col-span-full">
-                        <CardHeader className="flex flex-row items-start justify-between">
+                      <Card className="col-span-full overflow-hidden">
+                        <CardHeader className="flex flex-row items-start justify-between bg-gradient-to-r from-gray-50 to-white border-b">
                           <div>
-                            <CardTitle>Nutrition Analysis Results</CardTitle>
-                            <CardDescription>
+                            <CardTitle className="text-2xl">Nutrition Analysis Results</CardTitle>
+                            <CardDescription className="text-base">
                               AI-powered analysis of {productType || "your product"}
                               {companyName && ` by ${companyName}`}
                             </CardDescription>
                           </div>
                           <div className="flex space-x-2">
-                            <Button variant="outline" size="sm" onClick={handleSpeak}>
-                              <Play className="h-4 w-4 mr-1" /> Play
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={handleSpeak}
+                              className="flex items-center gap-1"
+                            >
+                              <Play className="h-4 w-4" /> Play
                             </Button>
-                            <Button variant="outline" size="sm" onClick={handlePause}>
-                              <Pause className="h-4 w-4 mr-1" /> Pause
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={handlePause}
+                              className="flex items-center gap-1"
+                            >
+                              <Pause className="h-4 w-4" /> Pause
                             </Button>
-                            <Button variant="outline" size="sm" onClick={handleResume}>
-                              <SkipForward className="h-4 w-4 mr-1" /> Resume
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={handleResume}
+                              className="flex items-center gap-1"
+                            >
+                              <SkipForward className="h-4 w-4" /> Resume
                             </Button>
                           </div>
                         </CardHeader>
-                        <CardContent>
-                          <div className="grid md:grid-cols-3 gap-6">
-                            <div className="md:col-span-2 space-y-4">
-                              <div className="p-4 bg-gray-50 rounded-lg">
-                                <h3 className="font-medium mb-2">Analysis</h3>
-                                <p className="text-gray-700 whitespace-pre-line">{analysis}</p>
+                        <CardContent className="p-0">
+                          <div className="grid md:grid-cols-3 gap-0">
+                            <div className="md:col-span-2 p-6 border-r">
+                              <div className="mb-6">
+                                <h3 className="text-lg font-semibold mb-3 flex items-center">
+                                  <FileText className="h-5 w-5 mr-2 text-gray-500" /> Analysis Summary
+                                </h3>
+                                <div className="p-5 bg-gray-50 rounded-lg border border-gray-100 text-gray-700 whitespace-pre-line">
+                                  {analysis}
+                                </div>
                               </div>
 
-                              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                                {[
-                                  { label: "Calories", value: "240 kcal", color: "bg-black" },
-                                  { label: "Protein", value: "5g", color: "bg-gray-700" },
-                                  { label: "Carbs", value: "30g", color: "bg-gray-500" },
-                                  { label: "Fat", value: "12g", color: "bg-gray-300" },
-                                ].map((stat, i) => (
-                                  <div key={i} className="p-4 border rounded-lg">
-                                    <div className={`w-8 h-1 ${stat.color} mb-2`}></div>
-                                    <p className="text-sm text-gray-500">{stat.label}</p>
-                                    <p className="text-xl font-bold">{stat.value}</p>
-                                  </div>
-                                ))}
+                              <div>
+                                <h3 className="text-lg font-semibold mb-3 flex items-center">
+                                  <BarChart3 className="h-5 w-5 mr-2 text-gray-500" /> Key Nutrients
+                                </h3>
+                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                                  <NutrientCard
+                                    label="Calories"
+                                    value="240"
+                                    unit="kcal"
+                                    color="bg-black"
+                                    icon="🔥"
+                                    percentage={60}
+                                  />
+                                  <NutrientCard
+                                    label="Protein"
+                                    value="5"
+                                    unit="g"
+                                    color="bg-gray-700"
+                                    icon="🥩"
+                                    percentage={25}
+                                  />
+                                  <NutrientCard
+                                    label="Carbs"
+                                    value="30"
+                                    unit="g"
+                                    color="bg-gray-500"
+                                    icon="🍚"
+                                    percentage={45}
+                                  />
+                                  <NutrientCard
+                                    label="Fat"
+                                    value="12"
+                                    unit="g"
+                                    color="bg-gray-300"
+                                    icon="🧈"
+                                    percentage={35}
+                                  />
+                                </div>
                               </div>
                             </div>
 
-                            <div>
-                              <Card>
-                                <CardHeader className="pb-2">
-                                  <CardTitle className="text-sm font-medium">Nutrition Overview</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                  <NutritionChart />
-                                </CardContent>
-                              </Card>
+                            <div className="p-6 bg-gray-50">
+                              <h3 className="text-lg font-semibold mb-4 flex items-center">
+                                <PieChart className="h-5 w-5 mr-2 text-gray-500" /> Nutrition Breakdown
+                              </h3>
 
-                              <div className="mt-4 space-y-2">
-                                <h4 className="text-sm font-medium">Ingredient Tags</h4>
-                                <div className="flex flex-wrap gap-2">
-                                  {["Gluten", "Sugar", "Natural Flavors", "Preservatives", "Artificial Colors"].map(
-                                    (tag, i) => (
-                                      <Badge key={i} variant="outline">
+                              <div className="bg-white p-4 rounded-lg border border-gray-100 mb-6">
+                                <EnhancedNutritionChart />
+                              </div>
+
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="text-sm font-medium mb-2 flex items-center">
+                                    <AlertCircle className="h-4 w-4 mr-1 text-yellow-500" /> Potential Concerns
+                                  </h4>
+                                  <div className="flex flex-wrap gap-2">
+                                    {["Added Sugar", "Preservatives", "Artificial Colors", "High Sodium"].map(
+                                      (tag, i) => (
+                                        <Badge
+                                          key={i}
+                                          variant="outline"
+                                          className="bg-yellow-50 text-yellow-700 border-yellow-200"
+                                        >
+                                          {tag}
+                                        </Badge>
+                                      ),
+                                    )}
+                                  </div>
+                                </div>
+
+                                <div>
+                                  <h4 className="text-sm font-medium mb-2 flex items-center">
+                                    <Check className="h-4 w-4 mr-1 text-green-500" /> Benefits
+                                  </h4>
+                                  <div className="flex flex-wrap gap-2">
+                                    {["Fiber Source", "No Trans Fat", "Vitamin C"].map((tag, i) => (
+                                      <Badge
+                                        key={i}
+                                        variant="outline"
+                                        className="bg-green-50 text-green-700 border-green-200"
+                                      >
                                         {tag}
                                       </Badge>
-                                    ),
-                                  )}
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="p-6 border-t bg-gray-50">
+                            <h3 className="text-lg font-semibold mb-4">Detailed Nutrition Facts</h3>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                              <NutritionFactsTable />
+                              <div className="md:col-span-1 lg:col-span-2">
+                                <h4 className="text-sm font-medium mb-3">Ingredients</h4>
+                                <div className="p-4 bg-white rounded-lg border border-gray-100 text-sm">
+                                  <p className="text-gray-700">
+                                    {text ||
+                                      "Sugar, Enriched Flour (Wheat Flour, Niacin, Reduced Iron, Thiamine Mononitrate, Riboflavin, Folic Acid), Vegetable Oil (Palm, Palm Kernel, and/or Coconut), Cocoa (Processed with Alkali), High Fructose Corn Syrup, Leavening (Baking Soda and/or Calcium Phosphate), Salt, Soy Lecithin, Chocolate, Natural and Artificial Flavor."}
+                                  </p>
+
+                                  <div className="mt-4 pt-4 border-t">
+                                    <h5 className="text-xs font-semibold uppercase text-gray-500 mb-2">
+                                      Ingredient Analysis
+                                    </h5>
+                                    <div className="flex flex-wrap gap-2">
+                                      {[
+                                        "Sugar",
+                                        "Enriched Flour",
+                                        "Vegetable Oil",
+                                        "Cocoa",
+                                        "High Fructose Corn Syrup",
+                                        "Salt",
+                                        "Soy Lecithin",
+                                        "Natural Flavor",
+                                        "Artificial Flavor",
+                                      ].map((ingredient, i) => (
+                                        <Badge
+                                          key={i}
+                                          variant="outline"
+                                          className={`${i < 3 ? "bg-red-50 text-red-700 border-red-200" : i < 6 ? "bg-yellow-50 text-yellow-700 border-yellow-200" : "bg-green-50 text-green-700 border-green-200"}`}
+                                        >
+                                          {ingredient}
+                                        </Badge>
+                                      ))}
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </CardContent>
-                        <CardFooter className="flex justify-between">
-                          <Button variant="outline">Save to History</Button>
-                          <Button variant="outline">Download Report</Button>
+                        <CardFooter className="flex justify-between bg-gray-50 border-t">
+                          <div className="flex gap-2">
+                            <Button variant="outline" className="flex items-center gap-1">
+                              <Save className="h-4 w-4" /> Save to History
+                            </Button>
+                            <Button variant="outline" className="flex items-center gap-1">
+                              <Share2 className="h-4 w-4" /> Share Results
+                            </Button>
+                          </div>
+                          <Button className="bg-black hover:bg-gray-800 text-white flex items-center gap-1">
+                            <Download className="h-4 w-4" /> Download Report
+                          </Button>
                         </CardFooter>
                       </Card>
                     </motion.div>
@@ -736,4 +861,3 @@ export default function Dashboard() {
     </div>
   )
 }
-
