@@ -3,6 +3,19 @@ A smart web app that helps users understand food labels in simple language using
 
 ---
 
+
+
+
+ ![Landing Page](landingpage.png) 
+
+
+
+
+![Dashboard](dashboard.png) |
+
+
+
+
 ## ✨ Features
 
 - 🔍 **Ingredient Analysis**: Upload or input ingredients and receive a clear, easy-to-understand explanation.
@@ -35,14 +48,15 @@ A smart web app that helps users understand food labels in simple language using
 5. 📊 Explore nutrient breakdown in colorful charts.
 
 ---
+ <!-- ## 📸 Screenshots
 
-## 📸 Screenshots
+ ![Landing Page](landingpage.png) 
 
-| Landing page | Dashboard |
-|--------------|-----------|
-| ![Landing Page](/landingpage.png) | ![Dashboard](/dashboard.png) |
 
----
+![Dashboard](dashboard.png) | -->
+
+
+
 
 ## 📦 Setup
 
