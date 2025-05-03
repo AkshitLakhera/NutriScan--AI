@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef } from "react"
+import { useRouter } from 'next/navigation';
 import Link from "next/link"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -19,6 +20,8 @@ export default function LandingPage() {
   const testimonialsRef = useRef(null)
   const pricingRef = useRef(null)
   const ctaRef = useRef(null)
+  const router = useRouter();
+
 
   // Scroll animations
   const { scrollY } = useScroll()
@@ -188,7 +191,7 @@ export default function LandingPage() {
                 health insights in seconds.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <Button className="bg-black text-white hover:bg-gray-800 px-8 py-6 text-base">
+                <Button className="bg-black text-white hover:bg-gray-800 px-8 py-6 text-base" onClick={() => router.push('/upload')}>
                   Start Scanning Free
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>

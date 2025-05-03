@@ -1,13 +1,13 @@
 "use client"
 
-import { Suspense } from "react"
-import dynamic from "next/dynamic"
+// import { Suspense } from "react"
+// import dynamic from "next/dynamic"
 
-// Dynamically import the 3D scene to ensure it only loads on the client
-const Scene3D = dynamic(() => import("./scene-3d"), {
-  ssr: false,
-  loading: () => <ModelLoader />,
-})
+// // Dynamically import the 3D scene to ensure it only loads on the client
+// const Scene3D = dynamic(() => import("./scene-3d"), {
+//   ssr: false,
+//   loading: () => <ModelLoader />,
+// })
 
 function ModelLoader() {
   return (
@@ -23,9 +23,14 @@ function ModelLoader() {
 export default function NutriScanModel() {
   return (
     <div className="w-full h-full rounded-xl overflow-hidden">
-      <Suspense fallback={<ModelLoader />}>
-        <Scene3D />
-      </Suspense>
+      {/* <Suspense fallback={<ModelLoader />}> */}
+        {/* <Scene3D /> */}
+        <img
+        src='/virtualmodel.jpg'
+        alt="NutriScan Preview"
+        className="w-full h-full object-cover"
+      />
+      {/* </Suspense> */}
     </div>
   )
 }
