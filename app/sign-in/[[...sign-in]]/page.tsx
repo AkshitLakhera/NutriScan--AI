@@ -5,12 +5,7 @@ import Link from "next/link"
 import { SignIn } from "@clerk/nextjs"
 import { Scan } from "lucide-react"
 import { motion } from "framer-motion"
-
 export default function SignInPage() {
-  // const clerk = useClerk();
-  // if (clerk.) {
-  //   return <div>Loading...</div>;
-  // }
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}

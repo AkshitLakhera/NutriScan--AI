@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useRef } from "react"
+import { useState, useRef ,useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   Upload,
@@ -34,7 +34,8 @@ import DashboardSidebar from "@/components/dashboard-sidebar"
 import EnhancedNutritionChart from "@/components/enhanced-nutrition-chart"
 import NutritionFactsTable from "@/components/nutrition-facts-table"
 import NutrientCard from "@/components/nutrient-card"
-
+import { useAuth } from "@clerk/nextjs"
+import { useRouter } from "next/router"
 export default function Dashboard() {
   const [text, setText] = useState("")
   const [analysis, setAnalysis] = useState("")
