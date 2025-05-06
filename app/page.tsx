@@ -158,7 +158,7 @@ export default function LandingPage() {
             </nav>
 
             <div className="flex items-center space-x-4">
-              <Button variant="outline" className="hidden md:inline-flex">
+              <Button variant="outline" className="hidden md:inline-flex" onClick={() => router.push('/sign-in')}>
                 Log in
               </Button>
               <Button className="hidden md:inline-flex bg-black text-white hover:bg-gray-800">Get Started</Button>

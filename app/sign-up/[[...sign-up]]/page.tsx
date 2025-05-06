@@ -2,15 +2,13 @@
 
 import type React from "react"
 import Link from "next/link"
-import { SignIn } from "@clerk/nextjs"
 import { Scan } from "lucide-react"
+import { SignUp } from "@clerk/nextjs"
 import { motion } from "framer-motion"
 
+
+
 export default function SignInPage() {
-  // const clerk = useClerk();
-  // if (clerk.) {
-  //   return <div>Loading...</div>;
-  // }
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
@@ -32,10 +30,10 @@ export default function SignInPage() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
       <main className="flex-1 flex items-center justify-center p-4">
-      <SignIn
-  path="/sign-in"
+      <SignUp
+  path="/sign-up"
   routing="path"
-  signUpUrl="/sign-up"
+  signInUrl="/sign-in"
   appearance={{
     elements: {
       rootBox: "w-full max-w-md mx-auto",
@@ -47,7 +45,7 @@ export default function SignInPage() {
       </motion.div>
 
       {/* Footer */}
-      <footer className="py-6 border-t mt-32">
+      <footer className="py-6 border-t">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-gray-500">
             © {new Date().getFullYear()} NutriScan AI. All rights reserved.
