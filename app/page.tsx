@@ -11,6 +11,7 @@ import FeatureCard from "@/components/feature-card"
 import TestimonialCard from "@/components/testimonial-card"
 import PricingCard from "@/components/pricing-card"
 import { MobileMenu } from "@/components/mobile-menu"
+import { useUser } from '@clerk/nextjs';
 
 export default function LandingPage() {
   // References for scroll animations
@@ -21,7 +22,18 @@ export default function LandingPage() {
   const pricingRef = useRef(null)
   const ctaRef = useRef(null)
   const router = useRouter();
-
+  const { isSignedIn, user, isLoaded } = useUser();
+//handlefunction
+const handleUploadclick =() =>{
+  if(!isLoaded){
+    return;
+  }
+  if(isSignedIn){
+    router.push("/upload");
+  }else{
+    router.push("/sign-in");
+  }
+}
 
   // Scroll animations
   const { scrollY } = useScroll()
@@ -191,7 +203,7 @@ export default function LandingPage() {
                 health insights in seconds.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <Button className="bg-black text-white hover:bg-gray-800 px-8 py-6 text-base" onClick={() => router.push('/upload')}>
+                <Button className="bg-black text-white hover:bg-gray-800 px-8 py-6 text-base" onClick={handleUploadclick}>
                   Start Scanning Free
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
