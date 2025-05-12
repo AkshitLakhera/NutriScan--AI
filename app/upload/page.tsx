@@ -36,6 +36,7 @@ import NutritionFactsTable from "@/components/nutrition-facts-table"
 import NutrientCard from "@/components/nutrient-card"
 import { useAuth } from "@clerk/nextjs"
 import { useRouter } from "next/router"
+import { AccountSettings } from "@/components/AccountSettings"
 export default function Dashboard() {
   const [text, setText] = useState("")
   const [analysis, setAnalysis] = useState("")
@@ -742,119 +743,7 @@ export default function Dashboard() {
             </TabsContent>
 
             <TabsContent value="settings" className="mt-0">
-              <div className="grid gap-6">
-                <div>
-                  <h1 className="text-3xl font-bold tracking-tight">Account Settings</h1>
-                  <p className="text-gray-500 mt-2">Manage your account preferences and settings</p>
-                </div>
-
-                <div className="grid gap-6 md:grid-cols-5">
-                  <Card className="md:col-span-2">
-                    <CardHeader>
-                      <CardTitle>Profile</CardTitle>
-                      <CardDescription>Manage your personal information</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-6">
-                      <div className="flex items-center space-x-4">
-                        <Avatar className="h-16 w-16">
-                          <AvatarImage src="/placeholder.svg?height=64&width=64" />
-                          <AvatarFallback>JD</AvatarFallback>
-                        </Avatar>
-                        <div>
-                          <Button variant="outline" size="sm">
-                            Change Avatar
-                          </Button>
-                        </div>
-                      </div>
-
-                      <div className="space-y-4">
-                        <div className="grid gap-2">
-                          <label className="text-sm font-medium">Name</label>
-                          <input
-                            type="text"
-                            defaultValue="John Doe"
-                            className="w-full border border-gray-200 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-black"
-                          />
-                        </div>
-
-                        <div className="grid gap-2">
-                          <label className="text-sm font-medium">Email</label>
-                          <input
-                            type="email"
-                            defaultValue="john.doe@example.com"
-                            className="w-full border border-gray-200 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-black"
-                          />
-                        </div>
-                      </div>
-                    </CardContent>
-                    <CardFooter>
-                      <Button className="bg-black hover:bg-gray-800 text-white">Save Changes</Button>
-                    </CardFooter>
-                  </Card>
-
-                  <Card className="md:col-span-3">
-                    <CardHeader>
-                      <CardTitle>Preferences</CardTitle>
-                      <CardDescription>Customize your NutriScan experience</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-6">
-                      <div className="space-y-4">
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <h4 className="font-medium">Default Language</h4>
-                            <p className="text-sm text-gray-500">Set your preferred language for analysis</p>
-                          </div>
-                          <select className="border border-gray-200 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-black">
-                            <option>English</option>
-                            <option>Hindi</option>
-                            <option>Spanish</option>
-                            <option>French</option>
-                          </select>
-                        </div>
-
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <h4 className="font-medium">Default Voice</h4>
-                            <p className="text-sm text-gray-500">Set your preferred voice for playback</p>
-                          </div>
-                          <select className="border border-gray-200 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-black">
-                            <option>English (US)</option>
-                            <option>English (UK)</option>
-                            <option>Hindi</option>
-                            <option>Spanish</option>
-                          </select>
-                        </div>
-
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <h4 className="font-medium">Dark Mode</h4>
-                            <p className="text-sm text-gray-500">Toggle between light and dark theme</p>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <label className="relative inline-flex items-center cursor-pointer">
-                              <input type="checkbox" className="sr-only peer" />
-                              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-black rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-black"></div>
-                            </label>
-                          </div>
-                        </div>
-
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <h4 className="font-medium">Notifications</h4>
-                            <p className="text-sm text-gray-500">Receive alerts and updates</p>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <label className="relative inline-flex items-center cursor-pointer">
-                              <input type="checkbox" defaultChecked className="sr-only peer" />
-                              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-black rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-black"></div>
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
+             <AccountSettings/>
             </TabsContent>
           </Tabs>
         </main>

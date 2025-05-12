@@ -6,6 +6,7 @@ import { Bell, Search, Menu, X, Scan } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { motion, AnimatePresence } from "framer-motion"
+import { ClerkProvider,UserButton , SignedIn,} from '@clerk/nextjs'
 
 export default function DashboardHeader() {
   const [showMobileMenu, setShowMobileMenu] = useState(false)
@@ -85,11 +86,14 @@ export default function DashboardHeader() {
               </motion.div>
             )}
           </AnimatePresence>
-
-          <Avatar>
-            <AvatarImage src="/placeholder.svg?height=32&width=32" />
-            <AvatarFallback>JD</AvatarFallback>
-          </Avatar>
+          <SignedIn>
+  <UserButton />
+</SignedIn>
+{/* <SignedOut> */}
+          {/* <Avatar> */}
+            {/* <AvatarImage src="/placeholder.svg?height=32&width=32" /> */}
+            {/* <AvatarFallback>JD</AvatarFallback>
+          </Avatar> */}
 
           <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>
             {showMobileMenu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

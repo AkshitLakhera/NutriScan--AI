@@ -12,7 +12,7 @@ export default function DashboardSidebar({ activeTab, setActiveTab }: DashboardS
     { id: "dashboard", label: "Dashboard", icon: <Home className="h-5 w-5" /> },
     { id: "upload", label: "Scan Ingredients", icon: <Upload className="h-5 w-5" /> },
     { id: "history", label: "Scan History", icon: <Clock className="h-5 w-5" /> },
-    { id: "stats", label: "Statistics", icon: <BarChart3 className="h-5 w-5" /> },
+    // { id: "stats", label: "Statistics", icon: <BarChart3 className="h-5 w-5" /> },
     { id: "settings", label: "Settings", icon: <Settings className="h-5 w-5" /> },
   ]
 
@@ -41,7 +41,7 @@ export default function DashboardSidebar({ activeTab, setActiveTab }: DashboardS
           ))}
         </div>
 
-        <div className="mt-auto pt-4 border-t space-y-1">
+        {/* <div className="mt-auto pt-4 border-t space-y-1">
           <button className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors w-full text-left">
             <User className="h-5 w-5" />
             <span>Account</span>
@@ -50,7 +50,7 @@ export default function DashboardSidebar({ activeTab, setActiveTab }: DashboardS
             <LogOut className="h-5 w-5" />
             <span>Log out</span>
           </button>
-        </div>
+        </div> */}
       </div>
     </aside>
   )
