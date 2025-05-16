@@ -24,7 +24,7 @@ export default function DashboardHeader() {
 
           <div className="hidden md:flex md:items-center md:gap-6">
             <nav className="flex items-center gap-6">
-              <Link href="/dashboard" className="text-sm font-medium hover:text-gray-600 transition-colors">
+              <Link href="#dashboard" className="text-sm font-medium hover:text-gray-600 transition-colors">
                 Dashboard
               </Link>
               <Link href="/dashboard?tab=history" className="text-sm font-medium hover:text-gray-600 transition-colors">

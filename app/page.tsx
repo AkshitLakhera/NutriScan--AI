@@ -11,7 +11,7 @@ import FeatureCard from "@/components/feature-card"
 import TestimonialCard from "@/components/testimonial-card"
 import PricingCard from "@/components/pricing-card"
 import { MobileMenu } from "@/components/mobile-menu"
-import { useUser } from '@clerk/nextjs';
+import { SignedIn, SignedOut, UserButton, useUser } from '@clerk/nextjs';
 
 export default function LandingPage() {
   // References for scroll animations
@@ -170,11 +170,19 @@ const handleUploadclick =() =>{
             </nav>
 
             <div className="flex items-center space-x-4">
+               {/* if signed in then show user button */}
+              <SignedIn>
+                <UserButton/>
+              </SignedIn>
+              {/* If not sign in i will render this */}
+              <SignedOut>
               <Button variant="outline" className="hidden md:inline-flex" onClick={() => router.push('/sign-in')}>
                 Log in
               </Button>
-              <Button className="hidden md:inline-flex bg-black text-white hover:bg-gray-800">Get Started</Button>
+              <Button className="hidden md:inline-flex bg-black text-white hover:bg-gray-800" onClick={handleUploadclick}>Get Started</Button>
               <MobileMenu />
+              </SignedOut>
+              
             </div>
           </div>
         </div>

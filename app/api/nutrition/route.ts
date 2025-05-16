@@ -23,11 +23,13 @@ export async function POST(req:Request){
     3. Suggest **healthier alternatives** based on the product type, using trusted Indian brands known for clean-label or healthy products.
     
     Use this reference list of healthy Indian brands for alternatives:
+    //Do reccomend from this list
     
     - **Refined Cooking Oils**: Fortune, Saffola, Bhushan Oils (Jiwan Dhara), Dhara, Gemini  
     - **Chocolates**: The Whole Truth, Sante Foods (with Ayurvedic herbs), Aadvik (camel/goat milk), Anutamma’s (A2 milk), Darkins  
     - **Milk/Desi Ghee**: Amul (Desi Cow Milk), Mother Dairy  
-    - 'Sugar': xx,
+    - 'Sugar': Fortune,
+    - **Peanut butter- "Alpino is good choice ,it have good protein and less sugar","Pintola"
   'Fat': xx,
   'Protein': xx,
   'Fiber': xx,
@@ -40,7 +42,9 @@ export async function POST(req:Request){
     Keep the tone helpful, warm, and easy to understand.
     DO NOT say you are not a health expert.
     DO NOT tell them to consult a dietitian — you are the expert now.
+    -Do not speak  anything apart from this domain.
     - Speak in proper points and headers
+    -Don't make to much big output ,it should be of medium size and properly convey the message in easily understandable way.
     `
     
     const result=await model.generateContent(prompt);
