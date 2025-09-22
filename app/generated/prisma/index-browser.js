@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.7.0
- * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+ * Prisma Client JS version: 6.16.2
+ * Query Engine version: 1c57fdcd7e44b29b9313256c76699e91c3ac3c43
  */
 Prisma.prismaVersion = {
-  client: "6.7.0",
-  engine: "3cff47a7f5d65c3ea74883f1d736e41d68ce91ed"
+  client: "6.16.2",
+  engine: "1c57fdcd7e44b29b9313256c76699e91c3ac3c43"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -120,9 +120,52 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  clerkId: 'clerkId',
+  email: 'email',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ScanScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  productName: 'productName',
+  companyName: 'companyName',
+  ingredients: 'ingredients',
+  score: 'score',
+  warnings: 'warnings',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.IngredientStatScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  name: 'name',
+  count: 'count',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-
+  User: 'User',
+  Scan: 'Scan',
+  IngredientStat: 'IngredientStat'
 };
 
 /**

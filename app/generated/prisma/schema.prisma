@@ -13,3 +13,33 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id              String           @id @default(cuid())
+  clerkId         String           @unique
+  email           String           @unique
+  scans           Scan[]
+  ingredientStats IngredientStat[]
+  createdAt       DateTime         @default(now())
+}
+
+model Scan {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  productName String
+  companyName String?
+  ingredients String // raw ingredients text
+  score       Float // health score e.g. 7.4
+  warnings    String[] // e.g. ["High Sugar", "High Sodium"]
+  createdAt   DateTime @default(now())
+}
+
+model IngredientStat {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  name      String // e.g. "Sugar"
+  count     Int // how many times it appeared
+  createdAt DateTime @default(now())
+}

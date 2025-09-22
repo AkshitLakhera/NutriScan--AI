@@ -6,13 +6,11 @@ A smart web app that helps users understand food labels in simple language using
 
 
 
- ![Landing Page](landingpage.png) 
+ ![Landing Page](public/landingpage.png)
 
 
 
-
-![Dashboard](dashboard.png) |
-
+![Dashboard](public/dashboard.png)
 
 
 
